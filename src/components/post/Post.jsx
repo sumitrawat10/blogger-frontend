@@ -14,7 +14,7 @@ export default function Post() {
           <span className="postCat">Life</span>
         </div>
         <span className="postTitle">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione, commodi sapiente eius id odio asperiores recusandae dolore maiores pariatur distinctio temporibus consequatur veritatis vel consectetur debitis nostrum itaque aut optio?
         </span>
         <hr />
         <span className="postDate">1 hour ago</span>

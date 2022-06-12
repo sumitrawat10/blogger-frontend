@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import TopBar from "./components/topbar/TopBar";
 import Home from "./pages/homepage/Home";
 import Login from "./pages/login/Login";
@@ -7,18 +11,18 @@ import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import SinglePost from "./components/singlePost/SinglePost";
 function App() {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <TopBar />
-      <Switch>
-        <Route exact path="/" ><Home /></Route>
-        <Route exact path="/register" >{user?<Home/>:<Register />}</Route>
-        <Route exact path="/login" >{user?<Home/>:<Login />}</Route>
-        <Route exact path="/write" >{user?<Write />:<Register/>}</Route>
-        <Route exact path="/settings" >{user?<Settings />:<Register/>}</Route>
-        <Route exact path="/post/:postId"><SinglePost /></Route>
-      </Switch>
+      <Routes>
+        <Route exact path={'/'} element={<Home />}/>
+        <Route exact path={'/register'} element={user?<Home/>:<Register />}/>
+        <Route exact path={'/login'} element={user?<Home/>:<Login />}/>
+        <Route exact path={'/write'} element={user?<Write />:<Register/>}/>
+        <Route exact path={'/settings'} element={user?<Settings />:<Register/>}/>
+        <Route exact path={'/post/:postId'} element={<SinglePost />}/>
+      </Routes>
     </Router>
   );
 }
