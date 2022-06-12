@@ -1,7 +1,9 @@
+import Sidebar from "../sidebar/Sidebar";
 import "./singlePost.css";
 
 export default function SinglePost() {
   return (
+    
     <div className="singlePost">
       <div className="singlePostWrapper">
         <img
@@ -47,6 +49,9 @@ export default function SinglePost() {
           aliquid magni iste pariatur asperiores fugit, aperiam id corporis?
         </p>
       </div>
+      <Sidebar/>
     </div>
+    
+    
   );
 }
