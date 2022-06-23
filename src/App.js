@@ -11,7 +11,7 @@ import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import SinglePost from "./components/singlePost/SinglePost";
 function App() {
-  const user = false;
+  const user = true;
   return (
     <Router>
       <TopBar />

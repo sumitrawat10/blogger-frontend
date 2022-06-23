@@ -1,18 +1,31 @@
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Sidebar from "../sidebar/Sidebar";
 import "./singlePost.css";
 
 export default function SinglePost() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get(`/posts/${path}`);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
   return (
-    
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          className="singlePostImg"
-          src="https://images.unsplash.com/photo-1521575107034-e0fa0b594529?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9zdHxlbnwwfHwwfHw%3D&w=1000&q=80"
-          alt=""
-        />
+        {post.photo && (
+          <img className="singlePostImg" src={post.photo} alt="" />
+        )}
+
         <h1 className="singlePostTitle">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-solid fa-pen-to-square"></i>
             <i className="singlePostIcon fa-regular fa-trash-can"></i>
@@ -21,37 +34,19 @@ export default function SinglePost() {
 
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author:<b>Vivek</b>
+            Author: 
+            <Link to={`/?username=${post.username}`} className="link" >
+              <b> {post.username}</b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour Ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
 
-        <p className="singlePostDesc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-          voluptates quis omnis doloremque, facere sit hic quidem? Praesentium
-          obcaecati, tempora quam excepturi similique recusandae esse nobis et
-          sint eaque assumenda. Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Accusantium incidunt totam vero sunt quaerat rerum
-          libero cum, omnis aspernatur illo autem quidem voluptatum corrupti
-          officiis, quod obcaecati aliquam doloribus ea. Lorem ipsum dolor sit,
-          amet consectetur adipisicing elit. Maiores facere culpa, obcaecati
-          tempore, omnis beatae, totam dolore fugiat adipisci explicabo expedita
-          distinctio. Id quam iusto a tenetur, ipsa nam facilis? Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Accusamus eos excepturi
-          quibusdam odit iste culpa? Sequi libero nobis amet rerum dignissimos
-          error magnam hic ratione sunt. Excepturi assumenda odio beatae? Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          similique hic ipsum possimus excepturi? Nam harum neque quas iste
-          consequuntur nesciunt fugit magnam. Nostrum minus illo sequi maiores
-          consequatur beatae. Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Delectus necessitatibus consequatur exercitationem ea voluptas
-          dolor assumenda, accusantium unde. Dignissimos perferendis laboriosam
-          aliquid magni iste pariatur asperiores fugit, aperiam id corporis?
-        </p>
+        <p className="singlePostDesc">{post.desc}</p>
       </div>
-      <Sidebar/>
+      <Sidebar />
     </div>
-    
-    
   );
 }
