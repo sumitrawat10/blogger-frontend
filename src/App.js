@@ -10,8 +10,10 @@ import Register from "./pages/register/Register";
 import Write from "./pages/write/Write";
 import Settings from "./pages/settings/Settings";
 import SinglePost from "./components/singlePost/SinglePost";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 function App() {
-  const user = true;
+  const {user} = useContext(Context);
   return (
     <Router>
       <TopBar />
