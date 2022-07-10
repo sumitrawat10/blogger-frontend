@@ -3,10 +3,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 export default function Sidebar() {
+  const PF = "http://localhost:5000/images/";
+  const { user } = useContext(Context);
   const [cats, setCats] = useState([]);
-
   useEffect(() => {
     const getCats = async () => {
       const res = await axios.get("/categories");
@@ -19,20 +22,34 @@ export default function Sidebar() {
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
         <img
-          src="https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg"
+          src={
+            user
+              ? user.profilePic?PF+user.profilePic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+              :`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+          }
           alt=""
         />
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatib
-        </p>
+        {user ? (
+          <p>
+            Hi, I'm {user.username} an avid reader,blogger,writer and many more
+            intellectual titles i can give myself.
+          </p>
+        ) : (
+          <p>Lorem Ipsum donor</p>
+        )}
       </div>
 
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="siderbarList">
           {cats.map((c) => (
-            <Link to={`/?category=${c.name}`} className="link" ><li className="sidebarListItem" key={c._id}> {c.name}</li></Link>
-           ))}
+            <Link to={`/?category=${c.name}`} className="link">
+              <li className="sidebarListItem" key={c._id}>
+                {" "}
+                {c.name}
+              </li>
+            </Link>
+          ))}
         </ul>
       </div>
 
