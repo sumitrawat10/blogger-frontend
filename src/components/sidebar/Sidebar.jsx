@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 
 export default function Sidebar() {
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://the-blogger-backend.herokuapp.com/images/";
   const { user } = useContext(Context);
   const [cats, setCats] = useState([]);
   useEffect(() => {
@@ -24,8 +24,10 @@ export default function Sidebar() {
         <img
           src={
             user
-              ? user.profilePic?PF+user.profilePic : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-              :`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+              ? PF + user.profilePic
+                ? PF + user.profilePic
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
           }
           alt=""
         />
