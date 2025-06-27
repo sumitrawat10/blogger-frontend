@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./register.css";
-import axios from "axios";
+import axios from "../../axiosConfig";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -64,4 +64,3 @@ export default function Register() {
     </div>
   );
 }
- 

@@ -1,7 +1,7 @@
 import "./sidebar.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import axios from "axios";
+import axios from "../../axiosConfig";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/Context";

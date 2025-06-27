@@ -2,7 +2,7 @@ import "./settings.css";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
-import axios from "axios";
+import axios from "../../axiosConfig";
 
 export default function Settings() {
   const [password, setPassword] = useState("");
@@ -51,7 +51,7 @@ export default function Settings() {
           <label htmlFor="">Profile Picture</label>
           <div className="settingsPP">
             <img
-              src={file ? URL.createObjectURL(file) : PF+user.profilePic}
+              src={file ? URL.createObjectURL(file) : PF + user.profilePic}
               alt=""
             />
             <label htmlFor="fileInput">

@@ -2,20 +2,20 @@ import { Link } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { Context } from "../../context/Context";
 import "./login.css";
-import axios from "axios";
+import axios from "../../axiosConfig";
 
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
   // eslint-disable-next-line no-unused-vars
-  const {  dispatch, isFetching } = useContext(Context);
+  const { dispatch, isFetching } = useContext(Context);
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("auth/login", {
-          username:userRef.current.value,
-          password:passwordRef.current.value,      
+        username: userRef.current.value,
+        password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       console.log(isFetching);
