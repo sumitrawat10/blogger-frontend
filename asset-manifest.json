@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/sumitrawat10/blogger-frontend/static/css/main.d878ada1.css",
-    "main.js": "/sumitrawat10/blogger-frontend/static/js/main.a8cda3e2.js",
-    "static/media/header.jpg": "/sumitrawat10/blogger-frontend/static/media/header.986238f09d4aa17231fc.jpg",
-    "index.html": "/sumitrawat10/blogger-frontend/index.html",
-    "main.d878ada1.css.map": "/sumitrawat10/blogger-frontend/static/css/main.d878ada1.css.map",
-    "main.a8cda3e2.js.map": "/sumitrawat10/blogger-frontend/static/js/main.a8cda3e2.js.map"
+    "main.css": "/static/css/main.d878ada1.css",
+    "main.js": "/static/js/main.9e8db38e.js",
+    "static/media/header.jpg": "/static/media/header.986238f09d4aa17231fc.jpg",
+    "index.html": "/index.html",
+    "main.d878ada1.css.map": "/static/css/main.d878ada1.css.map",
+    "main.9e8db38e.js.map": "/static/js/main.9e8db38e.js.map"
   },
   "entrypoints": [
     "static/css/main.d878ada1.css",
-    "static/js/main.a8cda3e2.js"
+    "static/js/main.9e8db38e.js"
   ]
 }
