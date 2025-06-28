@@ -41,4 +41,5 @@
     "node": "18.x",
     "npm": "9.x"
   }
+  "homepage": "https://github.com/sumitrawat10/blogger-frontend",
 }
